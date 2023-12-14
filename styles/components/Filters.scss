@@ -1,0 +1,15 @@
+.containerFilterAndButtons {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  .containerFilter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .searchButton {
+      margin-left: 24px;
+    }
+  }
+}

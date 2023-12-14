@@ -1,0 +1,21 @@
+.mainLayout {
+  min-height: 100vh;
+  .logo {
+    height: 32px;
+    margin: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .headerLayout {
+    margin: 24px 24px 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .contentLayout {
+    margin: 12px 24px 24px 24px;
+    padding: 24px;
+    min-height: 280px;
+  }
+}
