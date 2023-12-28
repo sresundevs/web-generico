@@ -1,5 +1,5 @@
 import { MenuItems } from '@/types/types'
-import { ArrowUpOutlined, HomeOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons'
+import { ArrowUpOutlined, HomeOutlined, ShoppingOutlined, SmileOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Image, Layout, Menu, MenuProps, theme } from 'antd'
 import MenuItem from 'antd/es/menu/MenuItem'
 import Head from 'next/head'
@@ -25,7 +25,8 @@ const MainLayout: FC<Props> = ({ children, title }) => {
   const menuItems: MenuItems[] = useMemo(
     () => [
       { path: '/', title: 'Home', icon: <HomeOutlined /> },
-      { path: '/customers', title: 'Customers', icon: <UserOutlined /> },
+      { path: '/customers', title: 'Customers', icon: <ShoppingOutlined /> },
+      { path: '/customers-movie', title: 'Customers Cinemas', icon: <SmileOutlined /> },
       { path: '/users', title: 'Users', icon: <UserOutlined /> }
     ],
     []

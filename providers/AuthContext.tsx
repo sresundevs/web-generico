@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react'
 
 import { User } from '@/interfaces/Users.interface'
+import { message } from 'antd'
 
 type typeAuthContext = {
   user: User
@@ -47,16 +48,21 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   const login = async (token: string) => {
-    const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_SECRET_KEY)
+    try {
+      const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_SECRET_KEY)
 
-    const data = (await jwtVerify(token, secret)).payload as { data: User; exp: number }
+      const data = (await jwtVerify(token, secret)).payload as { data: User; exp: number }
 
-    const user = data.data
-    setUser(user)
-    Cookies.set('authToken', token, { expires: new Date((data as any).exp * 1000) })
-    setSpinning(false)
-    setLoading(false)
-    router.push('/')
+      const user = data.data
+      setUser(user)
+      Cookies.set('authToken', token, { expires: new Date((data as any).exp * 1000) })
+      setSpinning(false)
+      setLoading(false)
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+      message.error('Invalid credentials')
+    }
   }
 
   const logout = () => {

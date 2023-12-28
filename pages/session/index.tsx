@@ -1,6 +1,6 @@
 import useAuth from '@/providers/AuthContext'
 import { requests } from '@/utils/requests'
-import { Button, Form, Input, Space } from 'antd'
+import { Button, Form, Input, Modal, Space, message } from 'antd'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -15,6 +15,10 @@ const SignIn = () => {
   const onFinish = async (values: FieldType) => {
     try {
       const { token } = await requests('/users/login', 'POST', values)
+      if (!token) {
+        message.error('Invalid credentials')
+        return
+      }
       login(token)
     } catch (err) {
       console.error(err)
