@@ -4,7 +4,7 @@ import MainLayout from '@/components/Layout/Layout'
 import { Customer } from '@/interfaces/Customers.interface'
 // import { FilterType } from '@/types/types'
 import { requests } from '@/utils/requests'
-import { Button, Form, Modal, Space, Table, message } from 'antd'
+import { Alert, Button, Form, Modal, Space, Table, message } from 'antd'
 // import moment from 'moment-timezone'
 import { useEffect, useState } from 'react'
 
@@ -110,7 +110,15 @@ const Customers = () => {
         okText={customerSelected ? 'Update' : 'Create'}
         cancelText="Cancel"
       >
-        <FormUpdate form={form} record={customerSelected} />
+        <>
+          <FormUpdate form={form} record={customerSelected} />
+          <>
+            <p>Recuerda incluir el código de país en el número</p>
+            <p>
+              Ejemplo: <b>+57 12345678</b> debería guardarse como <b>5712345678</b>
+            </p>
+          </>
+        </>
       </Modal>
     </>
   )
