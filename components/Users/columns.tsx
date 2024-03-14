@@ -1,4 +1,4 @@
-import GenerateColumns from '@/components/GeneretaColumbs/GenerateColumns'
+import GenerateColumns from '@/components/GenerateColumbs/GenerateColumns'
 import { User } from '@/interfaces/Users.interface'
 import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons'
 import { ColumnsType } from 'antd/es/table'

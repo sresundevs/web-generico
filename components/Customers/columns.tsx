@@ -1,4 +1,4 @@
-import GenerateColumns from '@/components/GeneretaColumbs/GenerateColumns'
+import GenerateColumns from '@/components/GenerateColumbs/GenerateColumns'
 import { Customer } from '@/interfaces/Customers.interface'
 import { ColumnsType } from 'antd/es/table'
 

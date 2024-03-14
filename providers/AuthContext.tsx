@@ -49,9 +49,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   const login = async (token: string) => {
     try {
+      console.log(process.env.NEXT_PUBLIC_SECRET_KEY)
       const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_SECRET_KEY)
+      
+      const data = (await jwtVerify(token, secret, {algorithms:['HS256']})).payload as { data: User; exp: number }
 
-      const data = (await jwtVerify(token, secret)).payload as { data: User; exp: number }
+      console.log(data)
 
       const user = data.data
       setUser(user)
