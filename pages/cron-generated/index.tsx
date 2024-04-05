@@ -21,7 +21,9 @@ const CronGenerated = () => {
   const getData = async () => {
     setLoading(true)
     try {
-      const data: Cron[] = [{cron_id:'1',cronName:'test',interval:'*/10 * * * * *',templateCode:'es',templateName:'test',templateRun:'>=', templateTime:'5'}]
+
+      const data: Cron[] = await requests('/crons', 'GET', undefined, true)
+      console.log(data)
       setCrons(data.map((cron: Cron) => ({ ...cron, key: cron.cron_id })))
     } catch (err) {
       console.error(err)
@@ -32,10 +34,9 @@ const CronGenerated = () => {
 
   const onFinish = async () => {
     const values = await form.validateFields()
-    setCrons((existingCrons)=>[...existingCrons, values])
-    /* try {
+    try {
       if (cronSelected) {
-        const data = await requests(`/customers/${cronSelected.cron_id}`, 'PUT', values, true)
+        const data = await requests(`/crons/${cronSelected.cron_id}`, 'PUT', values, true)
         if (data) {
           message.success(data.message)
           getData()
@@ -43,7 +44,7 @@ const CronGenerated = () => {
           message.error(data.message)
         }
       } else {
-        const data = await requests('/customers', 'POST', values, true)
+        const data = await requests('/crons', 'POST', values, true)
         if (data) {
           message.success(data.message)
           getData()
@@ -56,7 +57,7 @@ const CronGenerated = () => {
     } finally {
       setOpen(false)
       setCronSelected(undefined)
-    } */
+    } 
     setOpen(false)
     setCronSelected(undefined)
   }
