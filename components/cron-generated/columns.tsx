@@ -6,7 +6,7 @@ import { CaretRightOutlined, PauseOutlined, DeleteOutlined } from '@ant-design/i
 const columns = (): ColumnsType<Cron> => {
   return GenerateColumns([
     {
-      title: 'Cron Name',
+      title: 'Name',
       dataIndex: 'cronName',
       search: true
     },
@@ -38,6 +38,16 @@ const columns = (): ColumnsType<Cron> => {
     {
       title: 'Template Code',
       dataIndex: 'templateCode',
+      search: true
+    },
+    {
+      title: 'Variable Header',
+      dataIndex: 'variableHeader',
+      search: true
+    },
+    {
+      title: 'Variables Body',
+      dataIndex: 'variablesBody',
       search: true
     },
   ])

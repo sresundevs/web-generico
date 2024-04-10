@@ -21,9 +21,7 @@ const CronGenerated = () => {
   const getData = async () => {
     setLoading(true)
     try {
-
       const data: Cron[] = await requests('/crons', 'GET', undefined, true)
-      console.log(data)
       setCrons(data.map((cron: Cron) => ({ ...cron, key: cron.cron_id })))
     } catch (err) {
       console.error(err)
@@ -33,7 +31,16 @@ const CronGenerated = () => {
   }
 
   const onFinish = async () => {
-    const values = await form.validateFields()
+    let values = await form.validateFields()
+
+    console.log(values)
+
+    values.variableHeader = values.variableHeader ? Object.values(values.variableHeader) : 'N/A'
+
+    values.variablesBody = values.variablesBody ? Object.values(values.variablesBody) : ['N/A']
+
+    console.log(values.variablesBody)
+
     try {
       if (cronSelected) {
         const data = await requests(`/crons/${cronSelected.cron_id}`, 'PUT', values, true)
@@ -57,7 +64,7 @@ const CronGenerated = () => {
     } finally {
       setOpen(false)
       setCronSelected(undefined)
-    } 
+    }
     setOpen(false)
     setCronSelected(undefined)
   }
@@ -78,12 +85,12 @@ const CronGenerated = () => {
 
   return (
     <>
-      <MainLayout title="Cron Generator">
+      <MainLayout title="Campaigns">
         <>
           <div className="containerFilterAndButtons">
             <Space align="start" size={24}>
               <Button type="primary" onClick={onCreateCron}>
-                Create Cron
+                Create Campaigns
               </Button>
               <Button type="primary">Export Excel</Button>
               {/* <Button type="primary" onClick={getData}>
@@ -106,7 +113,7 @@ const CronGenerated = () => {
       </MainLayout>
       <Modal
         open={open}
-        title={`${cronSelected ? 'Update' : 'Create'} cron`}
+        title={`${cronSelected ? 'Update' : 'Create'} Campaigns`}
         onOk={onFinish}
         onCancel={onCancel}
         okText={cronSelected ? 'Update' : 'Create'}
