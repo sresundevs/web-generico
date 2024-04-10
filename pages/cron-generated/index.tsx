@@ -35,7 +35,9 @@ const CronGenerated = () => {
 
     console.log(values)
 
-    values.variableHeader = values.variableHeader ? Object.values(values.variableHeader) : 'N/A'
+    if (!values.variableHeader) {
+      values.variableHeader = 'N/A'
+    }
 
     values.variablesBody = values.variablesBody ? Object.values(values.variablesBody) : ['N/A']
 
