@@ -44,6 +44,8 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
       selectedTemplate.components.forEach((component: any) => {
         if (component.type === 'HEADER' && component.example && component.example.header_text && component.example.header_text.length > 0) {
           headerVar = component.example.header_text[0]
+          // Agregar automáticamente el valor de la variable del encabezado al formulario
+          form.setFieldsValue({ variableHeader: headerVar })
         }
 
         if (component.type === 'BODY' && component.example && component.example.body_text && component.example.body_text.length > 0) {
@@ -52,7 +54,6 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
           })
         }
       })
-
       setHeaderVariable(headerVar)
       setBodyVariables(bodyVars)
     }
@@ -73,17 +74,14 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
           <Radio value="Hours"> Hours </Radio>
         </Radio.Group>
       </Form.Item>
-      <Form.Item<any> name="interval" rules={rules('interval')} label="Intervalo:">
-        <Input />
-      </Form.Item>
-      <Form.Item<any> name="templateTime" rules={rules('template-time')} label="Tiempo de ejecucion:">
-        <Input />
-      </Form.Item>
       <Form.Item<any> name="templateRun" rules={rules('template-run')} label="Desea programar el evento antes o después de la fecha registrada:">
         <Select>
           <Option value="Antes">Antes</Option>
           <Option value="Despues">Después</Option>
         </Select>
+      </Form.Item>
+      <Form.Item<any> name="templateTime" rules={rules('template-time')} label="Tiempo de ejecucion:">
+        <Input />
       </Form.Item>
       <Form.Item<any> name="templateName" rules={rules('template-name')} label="Nombre de la plantilla:">
         <Select onChange={handleTemplateChange}>
@@ -95,12 +93,13 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
         </Select>
       </Form.Item>
       {headerVariable && (
-        <Form.Item<any> label="Variable del header:">
+        <Form.Item<any> label="Variable del header:" style={{ display: headerVariable ? 'none' : 'block' }}>
           <Form.Item name="variableHeader" rules={rules(`${headerVariable}`)} label={headerVariable}>
-            <Input placeholder={headerVariable} />
+            <Input value={headerVariable} />
           </Form.Item>
         </Form.Item>
       )}
+
       {bodyVariables.length > 0 && (
         <Form.Item label={'Variables del body'}>
           {bodyVariables.map((variable, index) => (

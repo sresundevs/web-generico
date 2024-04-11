@@ -1,7 +1,7 @@
 import GenerateColumns from '@/components/GenerateColumbs/GenerateColumns'
 import { Cron } from '@/interfaces/Crons.interface'
 import { ColumnsType } from 'antd/es/table'
-import { CaretRightOutlined, PauseOutlined, DeleteOutlined } from '@ant-design/icons';
+import { CaretRightOutlined, PauseOutlined, DeleteOutlined } from '@ant-design/icons'
 
 const columns = (): ColumnsType<Cron> => {
   return GenerateColumns([
@@ -16,18 +16,13 @@ const columns = (): ColumnsType<Cron> => {
       search: true
     },
     {
-      title: 'Interval',
-      dataIndex: 'interval',
+      title: 'Template Run',
+      dataIndex: 'templateRun',
       search: true
     },
     {
       title: 'Template Time',
       dataIndex: 'templateTime',
-      search: true
-    },
-    {
-      title: 'Template Run',
-      dataIndex: 'templateRun',
       search: true
     },
     {
@@ -49,7 +44,7 @@ const columns = (): ColumnsType<Cron> => {
       title: 'Variables Body',
       dataIndex: 'variablesBody',
       search: true
-    },
+    }
   ])
 }
 
