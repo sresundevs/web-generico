@@ -12,6 +12,7 @@
     "@ant-design/cssinjs": "^1.17.2",
     "@ant-design/icons": "^5.3.1",
     "antd": "^5.10.3",
+    "axios": "^1.6.8",
     "jose": "^5.1.1",
     "js-cookie": "^3.0.5",
     "moment-timezone": "^0.5.43",
