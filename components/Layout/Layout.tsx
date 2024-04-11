@@ -27,7 +27,8 @@ const MainLayout: FC<Props> = ({ children, title }) => {
       { path: '/', title: 'Home', icon: <HomeOutlined /> },
       { path: '/customers', title: 'Customers', icon: <ShoppingOutlined /> },
       { path: '/customers-movie', title: 'Customers Cinemas', icon: <SmileOutlined /> },
-      { path: '/users', title: 'Users', icon: <UserOutlined /> }
+      { path: '/users', title: 'Users', icon: <UserOutlined /> },
+      { path: '/cron-generated', title: 'Campaigns', icon: <UserOutlined /> }
     ],
     []
   )
