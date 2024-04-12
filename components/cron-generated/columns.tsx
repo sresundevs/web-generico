@@ -34,16 +34,6 @@ const columns = (): ColumnsType<Cron> => {
       title: 'Template Code',
       dataIndex: 'templateCode',
       search: true
-    },
-    {
-      title: 'Variable Header',
-      dataIndex: 'variableHeader',
-      search: true
-    },
-    {
-      title: 'Variables Body',
-      dataIndex: 'variablesBody',
-      search: true
     }
   ])
 }

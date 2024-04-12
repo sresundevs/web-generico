@@ -92,24 +92,6 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
           ))}
         </Select>
       </Form.Item>
-      {headerVariable && (
-        <Form.Item<any> label="Variable del header:" style={{ display: headerVariable ? 'none' : 'block' }}>
-          <Form.Item name="variableHeader" rules={rules(`${headerVariable}`)} label={headerVariable}>
-            <Input value={headerVariable} />
-          </Form.Item>
-        </Form.Item>
-      )}
-
-      {bodyVariables.length > 0 && (
-        <Form.Item label={'Variables del body'}>
-          {bodyVariables.map((variable, index) => (
-            <Form.Item<any> key={index} name={['variablesBody', `${index}`]} rules={rules(`${variable}`)} label={`${variable}:`}>
-              <Input placeholder={variable} />
-            </Form.Item>
-          ))}
-        </Form.Item>
-      )}
-
       <Form.Item<any> name="templateCode" rules={rules('template-code')} label="Codigo de lenguaje:">
         <Input disabled value={selectedTemplateLanguage} />
       </Form.Item>

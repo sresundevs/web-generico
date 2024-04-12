@@ -33,16 +33,6 @@ const CronGenerated = () => {
   const onFinish = async () => {
     let values = await form.validateFields()
 
-    console.log(values)
-
-    if (!values.variableHeader) {
-      values.variableHeader = 'N/A'
-    }
-
-    values.variablesBody = values.variablesBody ? Object.values(values.variablesBody) : ['N/A']
-
-    console.log(values.variablesBody)
-
     try {
       if (cronSelected) {
         const data = await requests(`/crons/${cronSelected.cron_id}`, 'PUT', values, true)

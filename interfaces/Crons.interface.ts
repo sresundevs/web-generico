@@ -6,6 +6,4 @@ export interface Cron {
   templateRun: string
   templateName: string
   templateCode: string
-  variableHeader?: string
-  variablesBody?: string[]
 }
