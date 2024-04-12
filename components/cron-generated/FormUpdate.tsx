@@ -65,10 +65,10 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
 
   return (
     <Form<any> form={form} layout="vertical">
-      <Form.Item<any> name="cronName" rules={rules('cron-name')} label="Nombre del Cron:">
+      <Form.Item<any> name="cronName" rules={rules('cron-name')} label="Nombre de la campaña:">
         <Input />
       </Form.Item>
-      <Form.Item<any> name="intervalTime" rules={rules('intervalTime')} label="Intervalo de Tiempo:">
+      <Form.Item<any> name="intervalTime" rules={rules('intervalTime')} label="Seleccione el intervalo de tiempo:">
         <Radio.Group>
           <Radio value="Minutes"> Minutes </Radio>
           <Radio value="Hours"> Hours </Radio>
@@ -80,10 +80,10 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
           <Option value="Despues">Después</Option>
         </Select>
       </Form.Item>
-      <Form.Item<any> name="templateTime" rules={rules('template-time')} label="Tiempo de ejecucion:">
+      <Form.Item<any> name="templateTime" rules={rules('template-time')} label="Tiempo de ejecucion para programar el envio del mensaje:">
         <Input />
       </Form.Item>
-      <Form.Item<any> name="templateName" rules={rules('template-name')} label="Nombre de la plantilla:">
+      <Form.Item<any> name="templateName" rules={rules('template-name')} label="Seleccione la plantilla que contenga el mensaje deseado:">
         <Select onChange={handleTemplateChange}>
           {templates.map((template, index) => (
             <Option key={index} value={template.name}>
@@ -92,7 +92,7 @@ const FormUpdate: FC<Props> = ({ record, form }) => {
           ))}
         </Select>
       </Form.Item>
-      <Form.Item<any> name="templateCode" rules={rules('template-code')} label="Codigo de lenguaje:">
+      <Form.Item<any> name="templateCode" rules={rules('template-code')} label="Codigo de lenguaje de la plantilla:">
         <Input disabled value={selectedTemplateLanguage} />
       </Form.Item>
     </Form>
